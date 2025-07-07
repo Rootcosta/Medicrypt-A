@@ -1,0 +1,29 @@
+#registrations {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Adjusted for better spacing */
+        align-items: center;
+        // height: 60vh; /* Full height of the viewport */
+    }
+
+    .btn {
+        width: 180px; /* Set a fixed width */
+        height: 180px; /* Set a fixed height */
+        font-size: 20px; /* Adjust font size */
+        font-weight: bold; /* Make text bolder */
+        margin: 10px; /* Space between buttons */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #007bff; /* Border color */
+        background-color: #f8f9fa; /* Background color */
+        color: #007bff; /* Text color */
+        transition: background-color 0.3s, color 0.3s; /* Transition for hover effect */
+        
+        &:hover {
+            background-color: #007bff; /* Change background on hover */
+            color: #fff; /* Change text color on hover */
+        }
+    }
+}

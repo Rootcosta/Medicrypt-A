@@ -1,0 +1,39 @@
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.btn-back:hover {
+  text-decoration: underline;
+}
+
+.patient-details-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+
+  h3 {
+    margin-bottom: 15px;
+  }
+
+  p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+
+    strong {
+      width: 200px;
+      display: inline-block;
+    }
+  }
+}

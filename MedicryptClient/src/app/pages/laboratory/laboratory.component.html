@@ -1,0 +1,44 @@
+<section id="laboratory" class="medicrypt-page d-flex align-items-center">
+  <div class="container mt-5">
+    <h1 class="text-center my-4">Laboratory Search</h1>
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Lab Name or Branch"
+          (input)="filterLaboratories($event)"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center">Loading laboratories...</div>
+    <div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+
+    <div class="row" *ngIf="!loading && !error">
+      <div class="col-md-4" *ngFor="let lab of filteredLaboratories">
+        <div class="card mb-4">
+          <img
+            [src]="
+              lab.photo ||
+              'https://cdn-icons-png.flaticon.com/512/3022/3022255.png'
+            "
+            class="card-img-top"
+            [alt]="lab.name"
+            style="
+              height: 150px;
+              width: 150px;
+              object-fit: contain;
+              margin: 20px auto;
+            "
+          />
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ lab.labName }}</h5>
+            <p class="card-text">Branch: {{ lab.branch }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

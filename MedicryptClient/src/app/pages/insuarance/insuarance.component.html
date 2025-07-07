@@ -1,0 +1,49 @@
+<section id="insurance" class="medicrypt-page d-flex align-items-center">
+  <div class="container mt-5">
+    <h1 class="text-center my-4">Insurance Company Search</h1>
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Insurance Company Name"
+          (input)="filterCompanies($event)"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center">
+      Loading insurance companies...
+    </div>
+    <div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+
+    <div class="row" *ngIf="!loading && !error">
+      <div
+        *ngFor="let insuranceCompany of filteredCompanies"
+        class="col-md-4 insurance-card"
+      >
+        <div class="card mb-4">
+          <img
+            [src]="
+              insuranceCompany.image ||
+              'https://static.vecteezy.com/system/resources/previews/040/345/518/non_2x/insurance-company-icon-in-logotype-vector.jpg'
+            "
+            class="card-img-top"
+            [alt]="insuranceCompany.name"
+            style="
+              height: 150px;
+              width: 150px;
+              object-fit: contain;
+              margin: 20px auto;
+            "
+          />
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ insuranceCompany.insuranceName }}</h5>
+            <p class="card-text">{{ insuranceCompany.branch }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

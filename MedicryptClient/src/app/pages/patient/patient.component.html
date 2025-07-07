@@ -1,0 +1,42 @@
+<section id="patient" class="medicrypt-page d-flex align-items-center">
+  <div class="container mt-5" style="padding-top: 60px">
+    <h2 class="text-center mb-4">Patients</h2>
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by First Name, Last Name, or Gender"
+          (input)="filterPatients($event)"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center">Loading patients...</div>
+    <div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+
+    <div class="patient-cards row" *ngIf="!loading && !error">
+      <div class="col-md-4" *ngFor="let patient of filteredPatients">
+        <div
+          class="card mb-4 cursor-pointer"
+          (click)="viewPatient(patient.address)"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+            alt="Patient"
+            class="card-img-top"
+            style="height: 150px; object-fit: contain"
+          />
+          <div class="card-body text-center">
+            <h5 class="card-title">
+              {{ patient.firstName }} {{ patient.lastName }}
+            </h5>
+            <p class="card-text">Gender: {{ patient.gender }}</p>
+            <p class="card-text">DOB: {{ patient.dob }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

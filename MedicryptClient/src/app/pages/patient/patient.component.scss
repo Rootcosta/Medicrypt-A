@@ -1,0 +1,17 @@
+.patient-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.card {
+  width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  background: #fff;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+.card:hover {
+  box-shadow: 0 0 10px #007bff;
+}

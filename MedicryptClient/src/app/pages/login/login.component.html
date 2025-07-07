@@ -1,0 +1,114 @@
+<section id="login" class="medicrypt-page d-flex align-items-center">
+  <div
+    class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light"
+  >
+    <div class="row w-100">
+      <div class="col-md-6 d-none d-md-block p-0">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/ujmDb-qcKC5aNIfGMPwax3tpk6CROw4Tdi9HDe_21fs.jpg"
+          alt="A cozy room with a desk, chair, and some framed pictures on the wall"
+          class="img-fluid h-100 w-100"
+          style="object-fit: cover"
+        />
+      </div>
+      <div class="col-md-6 d-flex flex-column justify-content-center p-5">
+        <h2 class="text-center font-weight-bold mb-4">Access Account</h2>
+        <p class="text-center text-muted mb-4">
+          Access your healthcare services seamlessly
+        </p>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <label for="userType">User Type</label>
+            <select
+              id="userType"
+              class="form-control"
+              formControlName="userType"
+            >
+              <option *ngFor="let type of userTypes" [value]="type">
+                {{ type | titlecase }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="email" class="sr-only">Email address</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text p-3"
+                  ><i class="icofont-envelope"></i
+                ></span>
+              </div>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                placeholder="Your email address"
+                [class.is-invalid]="
+                  loginForm.get('email')?.invalid &&
+                  loginForm.get('email')?.touched
+                "
+              />
+            </div>
+            <div
+              *ngIf="
+                loginForm.get('email')?.invalid &&
+                loginForm.get('email')?.touched
+              "
+              class="text-danger small"
+            >
+              Please enter a valid email.
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="password" class="sr-only">Password</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text p-3"
+                  ><i class="icofont-ui-password"></i
+                ></span>
+              </div>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+                placeholder="Enter your password"
+                [class.is-invalid]="
+                  loginForm.get('password')?.invalid &&
+                  loginForm.get('password')?.touched
+                "
+              />
+            </div>
+            <div
+              *ngIf="
+                loginForm.get('password')?.invalid &&
+                loginForm.get('password')?.touched
+              "
+              class="text-danger small"
+            >
+              Password is required.
+            </div>
+          </div>
+
+          <div *ngIf="errorMsg" class="alert alert-danger">{{ errorMsg }}</div>
+
+          <button
+            type="submit"
+            class="btn btn-primary btn-block"
+            [disabled]="loading"
+          >
+            {{ loading ? "Logging in..." : "Log In" }}
+          </button>
+        </form>
+
+        <p class="text-center text-muted mt-4">
+          Need to create an account?
+          <a href="#" class="text-primary">Sign Up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

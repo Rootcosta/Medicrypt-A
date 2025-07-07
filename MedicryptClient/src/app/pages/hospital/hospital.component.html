@@ -1,0 +1,33 @@
+<section id="hospital" class="medicrypt-page d-flex align-items-center">
+  <div class="container mt-5">
+    <h1 class="text-center my-4">Hospital Search</h1>
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Hospital Name, Branch, or Type"
+          (input)="filterHospitals($event)"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4" *ngFor="let hospital of filteredHospitals">
+        <div class="card">
+          <div class="card-body">
+            <img
+              src="https://st5.depositphotos.com/66485572/72405/v/450/depositphotos_724057974-stock-illustration-hospital-icon-vector-illustration-design.jpg"
+              class="card-img-top"
+              alt="{{ hospital.name }}"
+            />
+            <h5 class="card-title">{{ hospital.name }}</h5>
+            <p class="card-text">Branch: {{ hospital.branch }}</p>
+            <p class="card-text">Type: {{ hospital.hospitalType }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

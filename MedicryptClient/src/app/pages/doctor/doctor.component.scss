@@ -1,0 +1,21 @@
+.card {
+  padding: 12px;
+  justify-content: center;
+  text-align: center; /* Also centers text if needed */
+}
+
+.card-img-top {
+  height: 150px; /* smaller height */
+  width: 150px;  /* fixed width */
+  object-fit: contain; /* prevents stretching/cropping */
+  margin: 0 auto; /* center the image */
+  display: block; /* block element to center using margin */
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(52, 50, 50, 0.1);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.08);
+}

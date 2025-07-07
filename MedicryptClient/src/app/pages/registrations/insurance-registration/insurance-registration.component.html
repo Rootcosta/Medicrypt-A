@@ -1,0 +1,130 @@
+<section
+  id="insuranceRegistration"
+  class="medicrypt-page d-flex align-items-center"
+>
+  <form
+    [formGroup]="insuranceForm"
+    (ngSubmit)="registerInsurance()"
+    class="w-100"
+  >
+    <h3>Insurance Register</h3>
+
+    <div class="form-wrapper">
+      <label>Insurance Name</label>
+      <input formControlName="insuranceName" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <div class="form-wrapper">
+        <label>Title</label>
+        <select formControlName="title" class="form-control">
+          <option value="">Select a title</option>
+          <option value="Dr">Dr</option>
+          <option value="Prof">Prof</option>
+          <option value="Mr">Mr</option>
+          <option value="Mrs">Mrs</option>
+          <option value="Ms">Ms</option>
+          <option value="Miss">Miss</option>
+        </select>
+      </div>
+      <div class="form-wrapper">
+        <label>First name</label>
+        <input formControlName="firstName" type="text" class="form-control" />
+      </div>
+      <div class="form-wrapper">
+        <label>Last name</label>
+        <input formControlName="lastName" type="text" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-wrapper">
+        <label>Registration Number</label>
+        <input
+          formControlName="registrationNumber"
+          type="text"
+          class="form-control"
+        />
+      </div>
+      <div class="form-wrapper">
+        <label>Insurance Type</label>
+        <input
+          formControlName="insuranceType"
+          type="text"
+          class="form-control"
+        />
+      </div>
+    </div>
+
+    <div class="form-wrapper">
+      <label>Address</label>
+      <input formControlName="addressInfo" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <div class="form-wrapper">
+        <label>Email</label>
+        <input formControlName="email" type="email" class="form-control" />
+      </div>
+      <div class="form-wrapper">
+        <label>Phone</label>
+        <input formControlName="phone" type="text" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-wrapper">
+        <label>Branch</label>
+        <input formControlName="branch" type="text" class="form-control" />
+      </div>
+      <div class="form-wrapper">
+        <label>Insurance Cover</label>
+        <input
+          formControlName="insuranceCover"
+          type="text"
+          class="form-control"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-wrapper">
+        <label>Password</label>
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control"
+        />
+      </div>
+      <div class="form-wrapper">
+        <label>Confirm Password</label>
+        <input
+          formControlName="confirmPassword"
+          type="password"
+          class="form-control"
+        />
+      </div>
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" formControlName="termsAccepted" />
+        I accept the Terms of Use & Privacy Policy.
+      </label>
+    </div>
+
+    <div class="alert alert-danger mt-2" *ngIf="passwordMismatch">
+      Passwords do not match
+    </div>
+    <div class="alert alert-success mt-2" *ngIf="submissionSuccess">
+      Registration successful!
+    </div>
+    <div class="alert alert-danger mt-2" *ngIf="submissionError">
+      {{ submissionError }}
+    </div>
+
+    <button type="submit" [disabled]="submitting || insuranceForm.invalid">
+      Register Now
+    </button>
+  </form>
+</section>

@@ -1,0 +1,51 @@
+<section id="researcher" class="medicrypt-page d-flex align-items-center">
+  <div class="container mt-5">
+    <h1 class="text-center my-4">Researcher Search</h1>
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Name, Institution, or Field"
+          (input)="filterResearchers($event)"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center">Loading researchers...</div>
+    <div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+
+    <div class="row" *ngIf="!loading && !error">
+      <div class="col-md-4" *ngFor="let researcher of filteredResearchers">
+        <div class="card mb-4">
+          <img
+            [src]="
+              researcher.image ||
+              'https://cdn-icons-png.flaticon.com/512/1946/1946429.png'
+            "
+            class="card-img-top"
+            [alt]="researcher.name"
+            style="
+              height: 150px;
+              width: 150px;
+              object-fit: contain;
+              margin: 20px auto;
+            "
+          />
+          <div class="card-body text-center">
+            <h5 class="card-title">
+              {{ researcher.firstName }} {{ researcher.lastName }}
+            </h5>
+            <p class="card-text" *ngIf="researcher.instituteName">
+              Institution: {{ researcher.instituteName }}
+            </p>
+            <p class="card-text" *ngIf="researcher.destination">
+              Field: {{ researcher.destination }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

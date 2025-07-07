@@ -1,0 +1,14 @@
+.hospital-card {
+    padding: 12px;
+}
+.card-img-top {
+    height: 240px;
+    object-fit: cover;
+}
+.hospital-card:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(25, 119, 204, 0.1);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+    background-color: rgba(25, 119, 204, 0.08);
+}

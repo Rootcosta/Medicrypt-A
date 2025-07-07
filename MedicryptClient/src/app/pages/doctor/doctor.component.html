@@ -1,0 +1,49 @@
+<section id="doctor" class="medicrypt-page d-flex align-items-center">
+  <div class="container mt-5">
+    <h1 class="text-center my-4">Doctor Search</h1>
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Doctor Name, Specialty, or Branch"
+          (input)="filterDoctors($event)"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center">Loading doctors...</div>
+    <div *ngIf="error" class="alert alert-danger text-center">
+      {{ error }}
+    </div>
+
+    <div class="row" *ngIf="!loading && !error && filteredDoctors.length === 0">
+      <p class="text-center">No doctors found.</p>
+    </div>
+
+    <div class="row" *ngIf="!loading && !error">
+      <div class="col-md-4" *ngFor="let doctor of filteredDoctors">
+        <div
+          class="card mb-4 cursor-pointer"
+          (click)="viewDoctor(doctor.address)"
+        >
+          <img
+            src="../../../assets/img/doctors/Screenshot 2025-07-05 231635.png"
+            class="card-img-top"
+            alt="{{ doctor.name }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ doctor.title }} {{ doctor.lastName }}</h5>
+            <p class="card-text" *ngIf="doctor.specialization">
+              Specialty: {{ doctor.specialization }}
+            </p>
+            <p class="card-text" *ngIf="doctor.hospitalName">
+              Hospital: {{ doctor.hospitalName }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
